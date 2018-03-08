@@ -1,0 +1,65 @@
+### First things first... play the game!
+
+Before reading the code I wanted to get a feeling for the project scope: how many systems does it have, how
+complex do they seem to be, how do they interact with the player and each other. As I couldn't find any project
+documentation I decided to play the game and take notes on what I think is going on behind the scenes.
+The notes I took are as follows:
+
+Inputs: shoot and move; arrow keys and wasd.
+
+The character can move in eight directions.
+The character can shoot in four directions.
+The character movement is blocked by walls.
+The character moves randomly between rooms.
+The character has health.
+The character can pick up hearts and increase their health.
+The character can take health damage.
+
+A room has walls.
+A room has doors.
+A room can have enemies moving or shooting at the character.
+A room can have moving obstacles.
+A room's doors open when there are no enemies.
+
+Enemies can move in all directions, even though walls.
+Enemies can shoot in four directions.
+Enemies have health, but the player cannot see it.
+Enemies that touch the character deal health damage.
+Enemies struck by the character's bullets take health damage.
+
+After a few minutes, I've concluded that the Game is made out of Levels; Levels have Walls, Doors, Enemies and a Character;
+the Enemies are quite diverse; the Character has a limited amount of health.
+
+### Changing the morphology
+
+After collapsing all the functions and deleting a few superfluous blank lines I've immediately noticed that the
+JavaScript code is embedded in a HTML document. I'll remedy this by creating a "scripts" folder where I'll store all
+the JavaScript code.
+
+Now that the HTML and JavaScript files are in their separate folders, I'm going to place all the JavaScript variables
+(and constants disguised as variables) at the top of the script, so I can get a better overview of what is going on.
+
+Clean Code stresses the importance of carefully choosing variable names. Descriptive variable names can make
+the code read as if it was written in a controlled language (see "Simple English") while poorly chosen names can
+transform the program into an unsolvable puzzle. The first thing I'm going to do is change a few variable names:
+abbreviations such as "ctx" will be renamed to "context"; short, names such as "x" will be replaced by a longer,
+more descriptive name.
+
+In addition, I'm going establish the following naming and style conventions:
+* Local and global variables are made of lowercase words separated by underscores ("_").
+* All other names are written in CamelCase: functions, methods, JavaScript "classes" and others.
+
+* Indents are two whitespaces wide.
+* Every statement ends with a ;.
+
+For now, those conventions will be sufficient.
+
+After replacing the names, I glanced at the event handlers. Each time the user presses or releases a key, the game
+registers an event and performs the appropriate action. A total of eight key are tracked and are divided into two
+groups of four keys: arrow keys for shooting and wasd for moving. This is how you control the game.
+
+Now that variables and functions have been renamed, a few conventions have been established and I've identified
+which functions deal with the input and which are responsible for drawing shapes, I'm ready analyse how the game is
+implemented.
+
+### Implementation analysis
