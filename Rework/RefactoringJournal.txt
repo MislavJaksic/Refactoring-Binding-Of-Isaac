@@ -63,3 +63,44 @@ which functions deal with the input and which are responsible for drawing shapes
 implemented.
 
 ### Implementation analysis
+
+The first function which the code invokes is Draw(). Looking at it, I can see that it does a lot; and at different
+levels of abstraction (function, long, nested conditions and implementation statements, all weaved together).
+Separating the implementation code and highly abstract functions is going to be my next order of business. After a
+careful analysis, I have concluded that every time the <Canvas> element is redrawn the following happens in order:
+<Canvas> is reset; something is done depending on the door_number; doors are drawn; the game check the victory and
+defeat conditions; if bullets were fired, they should be drawn; walls, levels, the character, hearts and the score
+is also drawn; a special bullet condition is checked; requestAnimationFrame() function is invoked; if any of the
+shoot buttons are pressed, a bullet object is appended to the bullet array.
+
+Now I'll take a look at the <Canvas> API and how the game is implemented at the lowest level of abstraction.
+
+### Drawing API
+
+ Canvas coordinate system:                      x
+  ---------------------------------------------->
+ | x=0, y=0
+ |
+ |
+ |
+ |
+yV                x=canvas.width, y=canvas.height
+
+[Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial):
+* document.getElementById("myCanvas"); //-> grabs the <Canvas> from the HTML document
+* canvas.getContext("2d"); //-> extracts the 2d context from the <Canvas>; drawing API is invoked thought it
+
+[2D Canvas Context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D):
+* context.clearRect(x, y, width, height); //-> draw transparent black between the coordinates
+* context.beginPath(); //-> begin a new path and clear all the older subpaths
+* context.closePath(); //-> move the "pen" to the starting subpath coordinate and draw a line between the end and start points; either fill() or stroke()
+* context.rect(x, y, width, height); //-> create a rectangle path for either stroke() or fill()
+* context.arc(x, y, radius, startAngle, endAngle [, anticlockwise]); //-> start drawing from the x axis and continue clockwise; angles are expressed in radians, 90 degrees -> PI/2
+* context.fill([fillRule]); //-> colour in everything "inside" the path (depending on the fill rule)
+* context.stroke(); //-> draw the path
+
+Now that I know what the game has to offer, how it is implemented and which technology it uses I can start
+refactoring some of the functions.
+
+### Refactoring; first attempt
+
