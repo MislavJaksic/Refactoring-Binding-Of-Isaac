@@ -104,3 +104,25 @@ refactoring some of the functions.
 
 ### Refactoring; first attempt
 
+I'll start with the Draw() function. First, I consider what is being draw on the canvas. Its Shapes of different sizes and colours. These Shapes are mostly Rectangles, but there are also pie Slices and Circles.
+I'll keep this in mind as I construct the JavaScript "classes" (called prototypes).
+
+First, I'm going to wrap the 2DContext API with my own functions, because if I ever change my mind about the
+implementation technology, I'll be able to change it quite easily by editing just a few lines of code in a single
+function, whereas if these API calls were made all over the program, it would take hundreds of changes in multiple
+blocks of code. When the API calls were safely tucked into my functions, I created a few abstract and concrete
+classes: Point, Arc, Shape, Rectangle, Circle and Slice. Point couples x and y values, Arc simplifies drawing pie
+Slices and Shape is an abstract class from which all other shapes, such as Rectangle and Circle, are going to inherit
+the low level implementation methods.
+
+To test this class architecture, I chose a rather small function, DrawWalls(), to see if I can effectively refactor
+its code. If I could not, it would indicate that I need to rethink the class inheritance ("is a") and
+composition ("has a"), but I had no problems refactoring the code. By analysing DrawWalls() I've noticed it draws
+eight walls, two in each corner of the canvas. Instead of doing the same, I decided to create four walls and then
+drill a door in each wall, so that I could more easily refactor collision detection. I then created two more classes,
+Wall and Door, where a Door is a Wall, but you can go through it. Finally, I renamed Draw() to RedrawCanvas(),
+before saving the script.
+
+You can view the progress so far by read the rework_0.1.js script.
+
+
