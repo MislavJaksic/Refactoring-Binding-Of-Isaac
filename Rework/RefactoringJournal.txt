@@ -125,4 +125,28 @@ before saving the script.
 
 You can view the progress so far by read the rework_0.1.js script.
 
+### Refactoring continues
 
+Next, I'm going to take a look at the DrawCharacter() function. The character is drawn as a circle and its position
+is tracked using two variables, x and y. x and y will be renamed to x_character and y_character for they are too
+important to have a single letter name. Then, I move onto the next function.
+
+Character health is represented by hearts, more specifically, each health point is drawn as half a heart and
+DrawHearts() draws them on the canvas. The Health bar origin is positioned in the top left corner of the canvas and
+the hearts in it are drawn at a regular interval. A Heart is a shape made up of a pie Slice and a Triangle.
+Refactoring the function would be a breeze were the player not able to increase and decrease their health. However,
+because they can and the logic that controls those changes cannot be found in DrawHearts(), I have to look around
+the whole program for where it is implemented. After searching for quite a while, I've concluded that the code in
+question is always just below the character_health variable, which I promptly refactor and eliminate code duplication.
+
+Next, I create the HealthBar, FullHeart, HalfHeart and Triangle classes and analyse their contents. The HealthBar is
+either made up of FullHearts, if the number of health points is even, or consists of a few (or no) FullHearts and a
+single left HalfHeart if the number of health points is odd. A FullHeart has a left and a right HalfHeart. A HalfHeart
+has a Triangle and a pie Slice.
+The reason why I have modularized and abstracted the code so much is because I find it much easier to handle just a
+few abstract classes, such as a HealthBar, then to juggle a whole array of implementation level, concrete classes.
+This also allows me to decouple the HealthBar class from its visual implementation, so that if I suddenly change my
+mind and want to represent health as orbs, I'll be able to change only a few function which deal with drawing, as
+oppose to every single class that deals with health.
+
+You can see the changes I've made to the code in the rework_0.2.js script.
