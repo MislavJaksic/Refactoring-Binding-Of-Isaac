@@ -150,3 +150,21 @@ mind and want to represent health as orbs, I'll be able to change only a few fun
 oppose to every single class that deals with health.
 
 You can see the changes I've made to the code in the rework_0.2.js script.
+
+### Drilling deeper into the code
+
+Shooting! An integral part of the game I decided to tackle next. I extracted the code that seems to be responsible
+for shooting into its own function and indented it according to the style convention. The array "bullets" is closely
+related to two other functions called DrawShot() and RemoveShot(). I'll take a look at the DrawShot() function first.
+
+What DrawShot() seems to do is check all enemies positions in all levels and then compare it with the position of
+the bullet. If the bullet is near the enemy, it gets damaged. In order to better understand how enemies are named
+and created, I'll take a look at the levels array, which you might have noticed, is 3000 lines long.
+
+I'll treat levels as an onion. I'll "peel it" layer by layer. After indenting the code, I've started to divine what
+is going on: the levels array is made up of 5 objects where each object can have a level function, an enemies object
+and flags. The level function moves the character, spawns enemies and draws the inner walls. The enemies object is
+made up of functions and data that define the enemies. The status flag seems to be either 1 when the level should be
+drawn or 0 otherwise.
+
+
