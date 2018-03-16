@@ -167,4 +167,21 @@ and flags. The level function moves the character, spawns enemies and draws the 
 made up of functions and data that define the enemies. The status flag seems to be either 1 when the level should be
 drawn or 0 otherwise.
 
+The function DrawLevels() is responsible for drawing a level and it knows which level to draw based on the value of
+the status flag in the levels array.
 
+I've extracted the function which changes the status flags into its own function, ChooseLevelToDrawn(). After
+indenting, I can see that the function controls game level transitions. It checks if the character has entered a
+"door". The door is just a coloured area on the canvas, completely separate from the function which check if the
+character "touched" the door. That should be remedied by extending the Door class.
+
+However, first, I'm going to analyse the code after the condition. randomly_generated_level is either 1, 2, 3 or
+some other number which is just treated as "other" and randomly_generated_door is either 1, 2 or , again, some
+"other" number. I'll change the code so that "other" is a number. After extracting the IF condition into four
+separate predicate functions, thereby eliminating code duplication, I went on to refactor the levels array in
+parallel after noticing that the functions are closely related.
+
+After looking at the levels array I decided to switch tactics from "meticulous analysis..." to "Shovel the code into
+functions!". Hopefully, after all the code is refactored, I'll be able to discern what is going on in the array.
+
+After refactoring the level one function in the levels array, the code looks like: rework_0.3.js.
