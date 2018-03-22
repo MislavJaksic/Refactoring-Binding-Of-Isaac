@@ -185,3 +185,29 @@ After looking at the levels array I decided to switch tactics from "meticulous a
 functions!". Hopefully, after all the code is refactored, I'll be able to discern what is going on in the array.
 
 After refactoring the level one function in the levels array, the code looks like: rework_0.3.js.
+
+### Analysing and sorting the functions
+
+After looking at the levels array a bit more I've been able to conclude the following about the flags:
+Status flag: 1 if the level if drawn
+Active flag: 1 if the level enemies are defeated
+Regen flag: 1 if the health increase has been picked up
+
+Status flag: 1 if the level if drawn
+Active flag: 1 if the level enemies are defeated
+Regen flag: 1 if the health increase has been picked up
+
+It is now clear that the levels array handles drawing walls, movement and collision, enemy spawning and dispensing
+rewards to the player in the form of health increases. I think I'll be able to eliminate some of the code
+duplication if I couple the collision detection system (a complex if statement) with the Wall class and make the
+movement system independent from the game level context.
+
+### Change of plan
+
+After a lot more refactoring I've concluded that keeping the current game architecture while slowly replacing it
+with the new one is far more tiresome then just constructing the game from scratch using the refactored, abstract,
+building blocks I've created during this whole refactoring endeavour. The reason for this is that the time has come
+to deal with the global variables and how events are handled; they should be tucked into classes and events should
+be handled directly instead of through global variables.
+
+The old architecture game can be seen in rework_0.4.js script.
