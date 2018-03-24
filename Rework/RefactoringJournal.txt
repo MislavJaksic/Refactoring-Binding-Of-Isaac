@@ -211,3 +211,9 @@ to deal with the global variables and how events are handled; they should be tuc
 be handled directly instead of through global variables.
 
 The old architecture game can be seen in rework_0.4.js script.
+
+After removing the remnants of the old architecture, I've tested the game to see if I can make the character move
+smoothly and if I could easily draw the health bar. I've also refined some of the classes and added a few helper
+classes such as ExtremeCoordinates to reduce the number of parameters passed to functions.
+
+The end result can be seen in rework_1.0.js script.
