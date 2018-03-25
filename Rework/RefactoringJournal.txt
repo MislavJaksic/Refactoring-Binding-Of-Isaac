@@ -217,3 +217,23 @@ smoothly and if I could easily draw the health bar. I've also refined some of th
 classes such as ExtremeCoordinates to reduce the number of parameters passed to functions.
 
 The end result can be seen in rework_1.0.js script.
+
+### Restoring the starting room
+
+From here on out, I think I'll be making progress at a much faster pace. After constructing the outer walls of the starting level, solving collision detection and movement, the script looks like this: rework_1.1.js script.
+
+To make sure I have a comprehensive naming scheme and to reduce the amount of time I need to conjure up a 
+descriptive name, I've settled on the following prefix convention:
+Initialize_*: return a complex global object
+Draw_*: returns nothing; makes the object appear on canvas
+Get_*: returns a single value; all the required data is in the object
+Calculate_*: returns multiple values; some data has to be coded in or given as input
+Is_*: returns true or false; a predicate function
+
+Some of the Is_* prefixed function are going to sound silly when read aloud, but I think that is well worth it if 
+I'll be able to tell functions apart with a single glance. Until now, I have constructed Walls, a Health Bar and a
+Collision Detector. There are three more thing that will turn this from a walking gallery to a real game: Enemies,
+Shooting and Level Transition though Doors. Because the Door class already exists, lets tackle Level Transition next.
+
+### Level transition and generation
+
