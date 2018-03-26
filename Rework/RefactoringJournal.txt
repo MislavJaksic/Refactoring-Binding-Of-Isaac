@@ -104,8 +104,9 @@ refactoring some of the functions.
 
 ### Refactoring; first attempt
 
-I'll start with the Draw() function. First, I consider what is being draw on the canvas. Its Shapes of different sizes and colours. These Shapes are mostly Rectangles, but there are also pie Slices and Circles.
-I'll keep this in mind as I construct the JavaScript "classes" (called prototypes).
+I'll start with the Draw() function. First, I consider what is being draw on the canvas. Its Shapes of different
+sizes and colours. These Shapes are mostly Rectangles, but there are also pie Slices and Circles. I'll keep this in
+mind as I construct the JavaScript "classes" (called prototypes).
 
 First, I'm going to wrap the 2DContext API with my own functions, because if I ever change my mind about the
 implementation technology, I'll be able to change it quite easily by editing just a few lines of code in a single
@@ -220,7 +221,8 @@ The end result can be seen in rework_1.0.js script.
 
 ### Restoring the starting room
 
-From here on out, I think I'll be making progress at a much faster pace. After constructing the outer walls of the starting level, solving collision detection and movement, the script looks like this: rework_1.1.js script.
+From here on out, I think I'll be making progress at a much faster pace. After constructing the outer walls of the
+starting level, solving collision detection and movement, the script looks like this: rework_1.1.js script.
 
 To make sure I have a comprehensive naming scheme and to reduce the amount of time I need to conjure up a 
 descriptive name, I've settled on the following prefix convention:
