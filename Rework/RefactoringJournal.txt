@@ -237,3 +237,16 @@ Shooting and Level Transition though Doors. Because the Door class already exist
 
 ### Level transition and generation
 
+For now, each Room or Level will be made out of eight Walls and four Doors. If a character collides with a Wall, it
+will stop moving. If the character collides with a Door, it should be "transported" to another Room. If the
+character goes through the left Door, it should appear on the right side of the next Room. Naturally, if the
+characters goes through the top door, it should appear on the bottom of the next Room. The Game is made out of
+multiple Rooms, connected with Doors. A Door is just a thin Wall with a "Room transition" function attached. I'll
+keep this in mind while I draw how the Game is going to look, a series of connected Rooms as well as muse a bit
+about how I'm going to handle Room transitions.
+
+I've decided that I'll create an intermediate class called Level which has a grid and on it, a number of rooms. The
+grid will be populated with Rooms according to the following rules: the starting room will always be the same and
+placed first, in the center of the grid; each Room is going to be chosen from a pool of predesigned Rooms and will
+be placed randomly adjacent to another Room; Rooms are going to be picked until the specified number of Rooms is
+reached.
