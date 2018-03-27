@@ -252,3 +252,12 @@ grid will be populated with Rooms according to the following rules: the starting
 placed first, in the center of the grid; each Room is going to be chosen from a pool of predesigned Rooms and will
 be placed randomly adjacent to another Room; Rooms are going to be picked until the specified number of Rooms is
 reached.
+
+The Doors of the current Room will open once the Room has been "defeated", however Doors that do not lead into an
+adjacent Room should stay closed. The Game will have a single Level, but in due time, it might get expanded to
+include multiple Levels.
+
+After implementing the level layout generator, I've started constructing Rooms and shifting the architecture from a
+single room to a multi room Level connected with Doors architecture.
+
+My progress so far can be seen in the rework_1.2.js script.
