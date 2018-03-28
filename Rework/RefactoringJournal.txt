@@ -261,3 +261,13 @@ After implementing the level layout generator, I've started constructing Rooms a
 single room to a multi room Level connected with Doors architecture.
 
 My progress so far can be seen in the rework_1.2.js script.
+
+### Final architecture
+
+After a few attempts, I've settled on the game architecture and decided I would finalize it by implementing the
+Game class which has a CollisionDetector, multiple Levels and a Character. I've tried to construct them in such a
+way that they adhere to the Law of Demeter and rules of encapsulation. Now that I've connected the low level
+implementation and the most abstract classes, the only thing left is to make a refectoring pass and clean up the
+code before implementing any other functionality.
+
+The resulting code can be seen in the rework_1.3.js script.
