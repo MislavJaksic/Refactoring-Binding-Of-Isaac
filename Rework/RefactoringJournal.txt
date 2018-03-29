@@ -271,3 +271,13 @@ implementation and the most abstract classes, the only thing left is to make a r
 code before implementing any other functionality.
 
 The resulting code can be seen in the rework_1.3.js script.
+
+After this, I had to make sure the complexity of the program doesn't explode, because if it does, I will not be able
+to finish the project. I've reconsidered the names of each of the functions, settled on class responsibilities and
+how the different classes are going to interact with each other.
+
+Next on the list was the functionality that would allow the character to go through a door and into an adjacent room.
+After those functions were implemented I once again thought about reducing complexity and naming conventions and
+decided that I would prefix all "private" functions with an underscore (_).
+
+This leap foward can be revied in the rework_1.4.js script.
