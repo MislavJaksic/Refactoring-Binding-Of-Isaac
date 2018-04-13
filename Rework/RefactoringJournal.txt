@@ -280,4 +280,15 @@ Next on the list was the functionality that would allow the character to go thro
 After those functions were implemented I once again thought about reducing complexity and naming conventions and
 decided that I would prefix all "private" functions with an underscore (_).
 
-This leap foward can be revied in the rework_1.4.js script.
+This leap forward can be reviewed in the rework_1.4.js script.
+
+Now that the Character can move between rooms and also appear in from of the correct Door, I can safely say that the
+movement system is almost done. To make sure the Character cannot exit the Room whenever the player wants, I've made
+the Doors behave like Walls until a victory condition is achieved. All conditions are currently empty, but they can
+be modified to, for example, check the condition if all the items have been picked up, or if all the enemies have
+been defeated. In addition, I've made sure that the Door stays closed unless it is connected to another Room, no
+matter if the victory condition has been satisfied.
+
+The complete Character movement system can be seen in rework_1.5.js script.
+
+
