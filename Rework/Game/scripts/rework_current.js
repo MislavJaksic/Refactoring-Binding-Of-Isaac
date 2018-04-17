@@ -7,6 +7,7 @@ function InitializeGame(){
 function DrawGame() {
   ResetCanvas()
   
+  //game.UpdateStates()
   game.CheckConditions()
   
   game.CalculateAndSetCollisions();
@@ -20,8 +21,10 @@ function DrawGame() {
 
 
 function Game(){
+  this.number_of_levels = 2;
   this.levels = this._CreateRandomLevels();
   this.current_level_index = 0;
+  
   
   this.character = this._CreateCharacter();
   
@@ -29,10 +32,8 @@ function Game(){
 };
 
 Game.prototype._CreateRandomLevels = function(){
-  const number_of_levels = 2;
-  
   var levels = [];
-  for (let i = 0; i < number_of_levels; i += 1){
+  for (let i = 0; i < this.number_of_levels; i += 1){
     level = new Level();
     levels.push(level);
   };
@@ -41,13 +42,13 @@ Game.prototype._CreateRandomLevels = function(){
 };
 
 Game.prototype._CreateCharacter = function(){
-  const character_starting_position = new Point(canvas.width / 2, canvas.height / 2);
-  const character_size = 40;
-  const character_radius = character_size / 2;
-  const starting_character_movement_speed = 5;
-  const character_colour = "orange";
+  const position = new Point(canvas.width / 2, canvas.height / 2);
+  const size = 40;
+  const radius = size / 2;
+  const movement_speed = 5;
+  const colour = "orange";
   
-  var character = new Character(character_starting_position, character_radius, starting_character_movement_speed, character_colour);
+  var character = new Character(position, radius, movement_speed, colour);
   
   return character
 };
@@ -58,7 +59,7 @@ Game.prototype._CreateCollisionDetector = function(){
   return collision_detector;
 };
 
-Game.prototype.SetNextLevel = function(){
+Game.prototype.IncrementLevelIndex = function(){
   this.current_level_index += 1;
 };
 
@@ -67,6 +68,16 @@ Game.prototype.GetCurrentLevel = function(){
   
   return current_level;
 };
+
+/*Game.prototype.UpdateStates = function(){
+  var collision_flags = this._GetCollisionFlags();
+  
+  var current_level = this.GetCurrentLevel();
+  
+  current_level.CheckRoomVictoryCondition();
+  this.character.SetCollisionFlags(collision_flags);
+  current_level.ChangeCurrentRoomAndCharacterPosition(this.character, collision_flags);
+};*/
 
 Game.prototype.CheckConditions = function(){
   var current_level = this.GetCurrentLevel();
