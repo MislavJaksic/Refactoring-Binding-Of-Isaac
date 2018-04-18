@@ -291,4 +291,14 @@ matter if the victory condition has been satisfied.
 
 The complete Character movement system can be seen in rework_1.5.js script.
 
+### A need for unit testing
 
+At first, this was just a refactoring project, a project during which I would convince myself I can read another's
+code and refactor it. Never before have I programmed in JavaScript, nor made a real time video game, but as I
+quickly learned both, my ambitions expanded and so did the project's scope. I changed the architecture of the
+original game and with it came the opportunity to start again, to have procedurally generated levels instead of
+random ad-hoc ones, to eliminate code duplication and long nested if statements. However, today was the first time
+I've realised that I have written a coupled temporal function without knowing the reason why that would be so. To me,
+this indicates that the project has become so complex, that it is no longer manageable to introduce changes to it
+without fear that it will break the game or compromise the principles of Clean Code. Therefore, it is high time I
+find out how to unit test JavaScript.

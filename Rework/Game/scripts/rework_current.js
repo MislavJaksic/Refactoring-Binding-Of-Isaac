@@ -7,10 +7,10 @@ function InitializeGame(){
 function DrawGame() {
   ResetCanvas()
   
-  //game.UpdateStates()
-  game.CheckConditions()
+  game.UpdateStates()
+  //game.CheckConditions()
   
-  game.CalculateAndSetCollisions();
+  //game.CalculateAndSetCollisions();
   
   game.MoveEntities();
   
@@ -69,15 +69,16 @@ Game.prototype.GetCurrentLevel = function(){
   return current_level;
 };
 
-/*Game.prototype.UpdateStates = function(){
-  var collision_flags = this._GetCollisionFlags();
-  
+Game.prototype.UpdateStates = function(){
   var current_level = this.GetCurrentLevel();
   
   current_level.CheckRoomVictoryCondition();
+  
+  var collision_flags = this._GetCollisionFlags(); //must come after CheckRoomVictoryCondition, why?
+  
   this.character.SetCollisionFlags(collision_flags);
   current_level.ChangeCurrentRoomAndCharacterPosition(this.character, collision_flags);
-};*/
+};
 
 Game.prototype.CheckConditions = function(){
   var current_level = this.GetCurrentLevel();
