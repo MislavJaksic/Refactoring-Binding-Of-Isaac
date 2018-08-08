@@ -1,0 +1,48 @@
+Game
+The Game is made out of random Levels.
+The Game is linear, as Levels are completed one after another.
+The Game has a single Character.
+The Game has a CollisionDetector.
+The Game is drawn in multiple phases.
+
+The Game is responsible for operating the game at a high level by checking collisions and moving entities and drawing rooms. 
+
+Level
+A Level is made out of random Rooms.
+
+Room Grid
+Room Grid is the implementation of a Level.
+Room Grid is made out of a grid upon which random Rooms from the Room Pool have been placed.
+
+Room Pool
+Room Pool is a bag of designed Rooms.
+
+Character
+The Character has a position and health.
+The Character can move.
+The Character can shoot.
+
+The Character is always located in only one Room.
+
+Room
+A Room is made up of Outer Walls, Inner Walls, Doors, Enemies and Pickups.
+
+Feature list
+Character can move.
+Character can shoot.
+Character can be damaged by enemies.
+Character cannot pass though obstacles.
+Character can move between rooms.
+Character has health.
+Character can be damaged.
+Character can pick up items.
+
+Room is made of obstacles, doors, enemies and items.
+Room has a victory condition.
+
+Doors can be open or closed.
+If a door is closed, the character cannot pass though it.
+If the door is open,
+If the character passes thought it, it will move to another room.
+
+Walls are obstacles and the character cannot pass though it.
